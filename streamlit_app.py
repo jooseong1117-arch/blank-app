@@ -23,7 +23,7 @@ guards_db = {
     "권준혁": {"cost": 5500, "power": 25, "dice": 15},
     "송재원": {"cost": 6000, "power": 130, "dice": 35},
     "오유찬": {"cost": 6000, "power": 40, "dice": 20},
-    "김동규": {"cost": 6000, "power": 30, "dice": 15},
+    "김동규": {"cost": 6000, "power": 25, "dice": 10},
     "류신해": {"cost": 6500, "power": 60, "dice": 20},
     "노현경": {"cost": 6500, "power": 40, "dice": 20},
     "임주성": {"cost": 6500, "power": 25, "dice": 20},
