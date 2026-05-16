@@ -199,7 +199,7 @@ if st.button("⏳ 시뮬레이션 시작"):
         ji_perm_debuff = 0
         carried_shield = 0
         battle_logs = ""
-        com_secu = 3 if "최진영" in selected_guards else 0
+        com_secu = 2 if "최진영" in selected_guards else 0
         if "최진영" in selected_guards and "김동규" in selected_guards:
             com_secu += 1
             battle_logs += "> 💻 :blue[**[시너지 발동: 컴퓨터보안]**] 컴과의 힘으로 현재의 컴퓨터보안을 강화합니다. (비밀번호 변경 가능 횟수 +1)\n\n"
