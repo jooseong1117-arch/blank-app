@@ -19,36 +19,36 @@ st.write("---")
 
 # 부원 목록 (이름: [가격, 기본 수치, 주사위 최댓값])
 guards_db = {
-    "이아람": {"cost": 5000, "power": 25, "dice": 10},
-    "정진성": {"cost": 5500, "power": 25, "dice": 10},
-    "임주성": {"cost": 6000, "power": 25, "dice": 10},
-    "류신해": {"cost": 7500, "power": 25, "dice": 10},
-    "권준혁": {"cost": 8000, "power": 25, "dice": 10},
-    "오유찬": {"cost": 8500, "power": 25, "dice": 10},
-    "윤석준": {"cost": 8500, "power": 25, "dice": 10},
-    "전재환": {"cost": 9000, "power": 25, "dice": 10},
-    "이준혁": {"cost": 9000, "power": 25, "dice": 10},
-    "이유빈": {"cost": 9000, "power": 25, "dice": 10},
-    "강준서": {"cost": 9500, "power": 25, "dice": 10},
-    "김동규": {"cost": 10000, "power": 25, "dice": 10},
-    "양서진": {"cost": 10000, "power": 25, "dice": 10},
-    "노현경": {"cost": 10500, "power": 25, "dice": 10},
-    "송재원": {"cost": 11500, "power": 500, "dice": 10},
-    "한성원": {"cost": 12000, "power": 25, "dice": 10},
-    "장준혁": {"cost": 13000, "power": 25, "dice": 10},
-    "정하윤": {"cost": 14000, "power": 25, "dice": 10},
-    "최진영": {"cost": 14500, "power": 25, "dice": 10},
-    "류혜정": {"cost": 15000, "power": 25, "dice": 10},
-    "한부현": {"cost": 15000, "power": 25, "dice": 10},
-    "김유영": {"cost": 20000, "power": 10000, "dice": 0},
+    "이아람": {"cost": 5000, "power": 20, "dice": 10},
+    "권준혁": {"cost": 5500, "power": 25, "dice": 15},
+    "송재원": {"cost": 6000, "power": 130, "dice": 35},
+    "오유찬": {"cost": 6000, "power": 40, "dice": 20},
+    "김동규": {"cost": 6000, "power": 30, "dice": 15},
+    "류신해": {"cost": 6500, "power": 60, "dice": 20},
+    "노현경": {"cost": 6500, "power": 40, "dice": 20},
+    "임주성": {"cost": 6500, "power": 25, "dice": 20},
+    "정진성": {"cost": 7000, "power": 40, "dice": 20},
+    "양서진": {"cost": 7000, "power": 50, "dice": 15},
+    "윤석준": {"cost": 7000, "power": 50, "dice": 20},
+    "이준혁": {"cost": 7500, "power": 50, "dice": 15},
+    "전재환": {"cost": 8000, "power": 80, "dice": 25},
+    "이유빈": {"cost": 8500, "power": 50, "dice": 15},
+    "한부현": {"cost": 9000, "power": 30, "dice": 15},
+    "강준서": {"cost": 9500, "power": 70, "dice": 25},
+    "장준혁": {"cost": 9500, "power": 70, "dice": 20},
+    "한성원": {"cost": 10000, "power": 50, "dice": 15},
+    "정하윤": {"cost": 12000, "power": 80, "dice": 20},
+    "최진영": {"cost": 14000, "power": 100, "dice": 25},
+    "류혜정": {"cost": 15000, "power": 110, "dice": 30},
+    "김유영": {"cost": 20000, "power": 0, "dice": 0},
 }
 
 items_db = {
-    "🥤딸기라떼": {"cost": 2000, "desc": "매 시간 종료 시 25% 확률로 시간을 가속하여, 누적 효과(화상, 적응, 회복)를 한 번 더 발동시킵니다."},
-    "🍲식어버린김치찜": {"cost": 3500, "desc": "에세이를 빼앗겨도 2번 다시할 수 있습니."},
-    "🦪굴": {"cost": 5000, "desc": "치명적인 위기의 순간 사용합니다"},
-    "🥓우대갈비": {"cost": 7500, "desc": "이정인의 공격력을 30% 감소시킵니다."},
-    "🍖족발": {"cost": 15000, "desc": "이현재를 재미없게해 과제를 더 일찍 끝내도록 만듭니다."},
+    "🥤딸기라떼": {"cost": 1000, "desc": "기분이 좋아져 첫 턴에 보너스 방어력을 제공합니다."},
+    "🍲식어버린김치찜": {"cost": 2000, "desc": "에세이를 빼앗겨도 2번 다시할 수 있습니."},
+    "🦪굴": {"cost": 2500, "desc": "치명적인 위기의 순간 사용합니다"},
+    "🥓우대갈비": {"cost": 3500, "desc": "이정인의 공격력을 30% 감소시킵니다."},
+    "🍖족발": {"cost": 5500, "desc": "이현재를 재미없게해 과제를 더 일찍 끝내도록 만듭니다."},
 }
 
 # [2] 사용자 UI 및 고용 시스템
@@ -79,7 +79,7 @@ with col2:
 if "김유영" in selected_guards:
     BUDGET = 100000
 else:
-    BUDGET = 30000
+    BUDGET = 20000
 
 st.write("---")
 
@@ -93,7 +93,7 @@ if "김유영" in selected_guards:
 
 # 1. 딸기라떼 시너지
 if "류혜정" in selected_guards and "🥤딸기라떼" in selected_items:
-    discount = 2000
+    discount = 1000
     synergy_messages.append("💡 **[시너지 발견: 백억커피 알바생]** 이정도는 서비스야. (딸기라떼 구매비용 할인)")
 
 # 2. 삼준혁 시너지
@@ -202,7 +202,11 @@ if st.button("⏳ 시뮬레이션 시작"):
         com_secu = 3 if "최진영" in selected_guards else 0
         if "최진영" in selected_guards and "김동규" in selected_guards:
             com_secu += 1
-            battle_logs += "> 💻 :blue[**[시너지 발동: 컴퓨터보안]**] 컴과의 힘으로 현재의 컴퓨터보안을 강화합니다. (비밀번호 가능 횟수 +1)\n\n"
+            battle_logs += "> 💻 :blue[**[시너지 발동: 컴퓨터보안]**] 컴과의 힘으로 현재의 컴퓨터보안을 강화합니다. (비밀번호 변경 가능 횟수 +1)\n\n"
+
+        if "이준혁" in selected_guards and "🍲식어버린김치찜" in selected_items:
+            revives_left += 1
+            battle_logs += "> 🍲 :blue[**[시너지 발동: 김치남]**] 울트라 김치남이 김치찜을 한개 더 사왔습니다. (부활 횟수 +1)\n\n"
 
         is_ysj_berserk = False
         last_hour_gap = 0  # 직전 시간의 위력 격차 저장
@@ -273,7 +277,7 @@ if st.button("⏳ 시뮬레이션 시작"):
             if hour == 1:
                 hour_log += "> 🗡️ **[전투 개시]** 이정인이 에세이를 빼앗기 위해 천천히 접근합니다.\n\n"
             elif hour == 13:
-                hour_log += "> 📱 :red[**[단톡방 피드백]**] 이정인이 톡방에 지적질을 하며 엄청난 살의를 내뿜습니다!\n\n"
+                hour_log += "> 📱 :red[**[분노]**] 이정인이 톡방에 지적질을 하며 엄청난 살의를 내뿜습니다!\n\n"
             elif hour == 18 and target_hours == 18:
                 hour_log += "> 게임 재미없다 빨리 끝내라.\n\n"
             elif hour == 21:
@@ -281,18 +285,19 @@ if st.button("⏳ 시뮬레이션 시작"):
                 if "최진영" in selected_guards:
                     hour_log += "> 💉 :red[**[무력화]**] 최진영이 보안프로그램을 작동시켜, 사악한 해킹공격을 저지합니다!\n\n"
             elif hour == 24:
-                hour_log += "> 과제 끝! 제출 버튼만 누르면...!\n\n"
+                hour_log += "> 🔥과제 끝! 제출 버튼만 누르면...!\n\n"
+
 
             # 패스 기믹 처리
             if "정하윤" in selected_guards and hour % 4 == 0:
-                hour_log += "> ♠️  **[마이티하자]** 하윤이가 마이티를 하기 위해 당신을 숨겼습니다. (전투 패스)\n\n"
+                hour_log += "> ♠️  **[마이티진심녀]** 하윤이가 마이티를 하기 위해 당신을 숨겼습니다. (전투 패스)\n\n"
                 battle_logs += hour_log
                 log_container.markdown(battle_logs)
                 time.sleep(0.3)
                 continue
             if reverse_jungin == True:
                 reverse_jungin = False
-                hour_log += "> 😡 **[역정인정인]** 이정인이 빼앗긴 노트북을 겨우 다시 찾아옵니다. (전투 패스)\n\n"
+                hour_log += "> 😡 **[다시 정인하기]** 이정인이 빼앗긴 노트북을 겨우 다시 찾아옵니다. (전투 패스)\n\n"
                 battle_logs += hour_log
                 log_container.markdown(battle_logs)
                 time.sleep(0.3)
@@ -302,14 +307,14 @@ if st.button("⏳ 시뮬레이션 시작"):
             if is_buisness and hour % 6 == 0:
                 buisness_penalty = buisness_count_sim * 4
                 ji_perm_debuff += buisness_penalty
-                hour_log += f"> 💰 :blue[**[시너지 발동: 경영평균]**] {buisness_count_sim}인의 원론을 겪은 경영인들이 모여 사오정을 방지합니다! (칼리 영구 위력 -{buisness_penalty})\n\n"
+                hour_log += f"> 💰 :blue[**[시너지 발동: 경영평균]**] {buisness_count_sim}인의 원론을 겪은 경영인들이 모여 사오정을 방지합니다! (이정인 영구 위력 -{buisness_penalty})\n\n"
 
 
             #송재원 복귀 기믹
             if jawon_alive == 1 and random.random() < 0.1:
                 selected_guards.append("송재원")
                 jawon_alive = 2
-                hour_log += ">  👋 **[나 다시 왔어]** 송재원 복귀\n\n"
+                hour_log += ">  👋 **:green[[얘들아 나 다시 왔어~~]]** 송재원이 동방으로 복귀했습니다!\n\n"
 
             # 호위 전력 및 주사위 난수 계산
             current_team_power = persistent_power_bonus + carried_shield # 영구 버프(바퀴 황제 등)부터 시작
@@ -327,6 +332,10 @@ if st.button("⏳ 시뮬레이션 시작"):
                     roll = random.randint(1, max_dice)
                     current_team_power += (base_power + roll)
 
+            if hour == 1 and "🥤딸기라떼" in selected_items:
+                current_team_power += 50
+                hour_log += "> 🥤딸기라떼를 마셔 가라앉은 기분이 좋아집니다. 이 기세를 유지할 수 있을까요? (이번 턴 방어력 +50)\n\n"
+
             for guard in selected_guards:
                 base_power = guards_db[guard]["power"]
                 max_dice = guards_db[guard]["dice"]
@@ -339,103 +348,99 @@ if st.button("⏳ 시뮬레이션 시작"):
                     
                     # 🎯 필살기 발동 로직 - 주사위가 최댓값이 떴을 때!
                     if roll == max_dice:
-                        if guard == "리카르도":
+                        if guard == "이아람":
                             current_team_power += 15
-                            hour_log += "> 🕶️ :red[**[전원, 처형이다!]**] 리카르도가 원한 문신의 힘을 끌어내 지면을 강타합니다!\n\n"
+                            hour_log += "> 😠 :red[**[온화한 저도 화가났어요]**] 아람이도 이정인의 만행에 분노했습니다!\n\n"
                             
-                        elif guard == "에즈라":
+                        elif guard == "권준혁":
                             current_team_power += 15
-                            hour_log += "> 🦮 :red[**[유리아 공방 - 총공 모드, 마크 17!]**] 에즈라가 온갖 무기를 한꺼번에 전개하여 화력을 쏟아붓습니다!\n\n"
+                            hour_log += "> 🎇 :red[**[천문학자의 싸움법]**] 천문 관측용 레이저포인터를 꺼내들어 이정인의 시야를 방해합니다!\n\n"
                         
-                        elif guard == "모제스":
-                            ji_perm_debuff += 10 
-                            hour_log += "> 👁️ :red[**[붉은 점]**] 모제스가 연기 너머로 E.G.O의 가장 취약한 틈새를 꿰뚫어 봅니다! (칼리 영구 위력 -10)\n\n"
+                        elif guard == "오유찬":
+                            ji_perm_debuff += 5 
+                            hour_log += "> 🌀 :red[**[최면술]**] 오유찬이 이정인에게 최면을 걸어 졸리게 합니다! (이정인 영구 위력 -5)\n\n"
                         
-                        elif guard == "뇌횡":
-                            current_team_power += 20
-                            hour_log += "> 🐯 :red[**[초절맹호살격난참]**] 뇌횡이 맹호의 기세로 적의 숨통을 끊을 난격을 꽂아 넣습니다!\n\n"
+                        elif guard == "류신해":
+                            current_team_power += 30
+                            hour_log += "> ⚾ :red[**[롯데자이언츠]**] 야구를 보던 류신해가 분노하여 전투력을 올립니다!\n\n"
                         
-                        elif guard == "어느 싱클레어":
+                        elif guard == "임주성":
                             current_team_power += 25
-                            hour_log += "> 🐣 :red[**[취수낭랑 - 성]**] 어느 싱클레어의 할버드와 대검이 붉은안개의 참격을 깔끔하게 흘려냅니다!\n\n"
+                            hour_log += "> 🤐 :red[**[고자질]**] 임주성이 이정인 얘기를 여기저기 '주성'하고 다녔습니다!\n\n"
                         
-                        elif guard == "산초":
+                        elif guard == "한부현":
                             current_team_power += 30
                             blood_gauge += 50
-                            hour_log += "> 🩸 :red[**[아류 산초 경혈식 - 라 샹그레]**] 산초가 끓어오르는 피를 창끝에 모아 폭발시킵니다!\n\n"
+                            hour_log += "> 🫢 :red[**[잼얘거리 추가]**] 한부현이 차가운 시선으로 이정인을 바라보며 잼얘를 충전합니다!\n\n"
                         
-                        elif guard == "니콜라이":
+                        elif guard == "정진성":
                             current_team_power += 35
-                            hour_log += "> 🎯 :red[**[처분]**] 니콜라이가 붉은안개에게 처분 표식을 새겨넣고, 검으로 주홍빛 궤적을 그려냅니다!\n\n"
+                            hour_log += "> 🗾 :red[**[일본여행]**] 일본여행을 가기로 마음먹은 정진성의 사기가 올라갑니다!\n\n"
                         
                         elif guard == "샤오":
                             current_team_power += 35
                             hour_log += "> 🐉 :red[**[도철]**] 샤오가 불타오르는 언월도를 휘두르며 거대한 화염의 용을 뿜어냅니다!\n\n"
                         
-                        elif guard == "엄지 아비 발렌치나":
+                        elif guard == "노현경":
                             current_team_power += 35
-                            hour_log += "> 🤺 :red[**[처분]**] 발렌치나가 원망을 실은 칼날 두 자루를 무자비하게 휘두릅니다!\n\n"
+                            hour_log += "> 🤭 :red[**[놀리기 전문가]**] 노현경의 무자비한 놀림이 이정인의 정신을 어지럽힙니다!\n\n"
                         
-                        elif guard == "중지 아비 마티아스":
-                            current_team_power += 35
-                            hour_log += "> ⛓️ :red[**[즉결처형 - 레바테인]**] 마티아스가 장부의 기록에 따라 피할 수 없는 징벌을 내립니다!\n\n"
+                        elif guard == "김동규":
+                            current_team_power += 20
+                            hour_log += "> 🍔 :red[**[뜨거운 맛]**] 김동규가 이정인에게 맘스터치의 '뜨거운 맛'을 보여줍니다!\n\n"
                         
-                        elif guard == "노란작살 베스파":
+                        elif guard == "윤석준":
                             current_team_power += 40
-                            hour_log += "> 🐝 :red[**[섬봉광검술 - 환도]**] 베스파가 시야에서 사라진 순간, 사각을 파고드는 치명적인 참격이 작렬합니다!\n\n"
+                            hour_log += "> 🤬 :red[**[급발진]**] 결국 스트레스가 극에달한 윤석준이 참을 수 없는 일격을 날립니다!\n\n"
                         
-                        elif guard == "검지 아비 뤼엔":
-                            if "롤랑" in selected_guards:
-                                current_team_power += 60
-                                hour_log += "> 📜 :red[**[Furioso - Resonance]**] 뤼엔이 원본의 움직임에 완벽히 동기화하여 파괴적인 모방 난무를 펼칩니다!\n\n"
-                            else:
-                                current_team_power += 40
-                                hour_log += "> 📜 :red[**[Furioso - Replica]**] 뤼엔이 헤르메스의 의지로 검은침묵의 난무를 기괴하게 모방해냅니다!\n\n"
+                        elif guard == "송재원":
+                                current_team_power += 10
+                                hour_log += "> 🧙‍♀️ :red[**[송구리당당숭당당]**] 송재원이 기괴한 주문을 읊어 이정인의 혼을 빼놓습니다!\n\n"
                         
-                        elif guard == "붉은시선 베르길리우스":
+                        elif guard == "강준서":
+                            current_team_power += 30
+                            hour_log += "> 📲 :red[**[x호선 번따남]**] 강준서가 침착하게 이정인의 번호를 따내는데 성공했습니다!\n\n"
+                        
+                        elif guard == "이준혁":
                             current_team_power += 45
-                            hour_log += "> 🩸 :red[**[죽은 혈귀를 위한 장례]**] 베르길리우스의 글라디우스가 피의 궤적을 그리며 주변을 압도합니다!\n\n"
+                            hour_log += "> 🤷‍♂️ :red[**[이게내가잘못한거야?]**] 이준혁의 뇌절이 이정인의 정신을 어지럽힙니다!\n\n"
                         
-                        elif guard == "가치우":
-                            current_team_power += 45
-                            hour_log += "> 🍂 :red[**[천강성 - 격]**] 가치우의 봉에 다섯 개의 망이 감기고, 파괴적인 힘을 뿜어냅니다!\n\n"
+                        elif guard == "양서진":
+                            current_team_power += 30
+                            hour_log += "> 👮‍♀️ :red[**[유교걸]**] 양서진이 이정인의 못된 점을 조목조목 지적합니다!\n\n"
                         
-                        elif guard == "푸른잔향 아르갈리아":
-                            current_team_power += 50
-                            hour_log += "> 🎼 :red[**[최후의 선율]**] 아르갈리아가 광소하며 치명적인 진동의 낫을 휘두릅니다!\n\n"
-                        
-                        elif guard == "롤랑":
-                            if "검지 아비 뤼엔" in selected_guards:
-                                current_team_power += 75
-                                hour_log += "> ⬛ :red[**[Furioso - Original]**] 롤랑이 모조품 앞에서 원본의 품격을 보여줍니다!\n\n"
-                            else:
+                        elif guard == "전재환":
+                            if "이준혁" in selected_guards:
                                 current_team_power += 50
-                                hour_log += "> ⬛ :red[**[Furioso]**] 롤랑이 9개의 무기를 꺼내어 숨 쉴 틈 없는 난무를 펼칩니다!\n\n"
+                                hour_log += "> 📉 :red[**[인내심의 한계]**] 이준혁의 뇌절에 지친 전재환이 분노합니다!\n\n"
+                            else:
+                                current_team_power += 30
+                                hour_log += "> 📈 :red[**[인액터스]**] 전재환이 사업가의 감각으로 이정인의 약점을 분석합니다!\n\n"
                         
-                        elif guard == "검은침묵 안젤리카":
+                        elif guard == "이유빈":
                             current_team_power += 50
-                            hour_log += "> 🧤 :red[**[백색 왈츠]**] 안젤리카가 무도회를 거닐듯 우아하고도 파괴적인 공방 무기 연계를 선보입니다!\n\n"
+                            hour_log += "> 🐦 :red[**[탐조]**] 이유빈이 탐조도구로 이정인의 약점을 파악했습니다!\n\n"
                         
-                        elif guard == "보라눈물 이오리":
+                        elif guard == "정하윤":
                             current_team_power += 50
-                            hour_log += "> 🐍 :red[**[환영난무]**] 보라눈물이 여러 차원의 자세를 동시에 전개하여 회피불능의 참격을 날립니다!\n\n"
+                            hour_log += "> 🏃‍♀️ :red[**[노기런]**] 결국 런에 성공한 정하윤이 호기롭게 전장에 복귀합니다!\n\n"
                         
-                        elif guard == "처형자 바랄":
+                        elif guard == "장준혁":
                             current_team_power += 55
-                            hour_log += "> 💉 :red[**[혈청 R]**] 바랄이 혈청 R을 투여하여 폭발적인 기세로 칼리에게 돌진합니다!\n\n"
+                            hour_log += "> 🫡 :red[**[전략가]**] 장준혁이 침착하게 이정인의 돌진을 막아냅니다!\n\n"
                         
-                        elif guard == "바퀴 황제":
-                            current_team_power += 60
-                            hour_log += "> 🪳 :red[**[황제의 적출]**] 진화를 거듭한 황제가 거대한 껍데기를 휘둘러 대지를 짓뭉갭니다!\n\n"
+                        elif guard == "한성원":
+                            current_team_power += 55
+                            hour_log += "> 🤣 :red[**[웃수저 발동]**] 한성원이 몸개그를 시전하여 모두를 포복절도 시킵니다!\n\n"
                         
-                        elif guard == "핏빛 밤 엘레나":
+                        elif guard == "최진영":
                             current_team_power += 70
-                            hour_log += "> 🧛‍♀️ :red[**[핏빛 밤의 진노]**] 엘레나가 굶주림을 개방하여 시야에 보이는 모든 것을 찢어발깁니다!\n\n"
+                            hour_log += "> 🎤 :red[**[노래방 영역전개]**] 최진영이 동방을 코노로 만들어 기세를 올립니다!\n\n"
                         
-                        elif guard == "장로 돈키호테":
+                        elif guard == "류혜정":
                             current_team_power += 85
-                            blood_gauge += 50
-                            hour_log += "> 🎠 :red[**[돈키호테류 경혈 오의 - 구]**] 장로 돈키호테가 만든 피의 구가 폭발하며 전장을 뒤덮습니다!\n\n"
+                            blood_gauge += 0
+                            hour_log += "> 🔥 :red[**[패기]**] 류혜정의 위압감이 동아리방을 뒤덮습니다!\n\n"
 
                     # 💥 대실패 발동 로직 - 주사위가 1이 떴을 때
                     elif roll == 1:
@@ -457,7 +462,7 @@ if st.button("⏳ 시뮬레이션 시작"):
                         elif guard == "송재원":
                             jawon_alive = 0
                             selected_guards.remove("송재원")
-                            hour_log += "> :red[**[다시 도망치기]**] 바빠서 다음에 다시 올게~\n\n"
+                            hour_log += "> 🤸‍♀️:red[**[다시 도망치기]**] 얘들아 약속이 있어서 다음에 다시 올게~\n\n"
                         else:
                             current_team_power -= (base_power + 1) # 방금 더했던 위력을 다시 빼서 0으로 무효화
                             hour_log += f"> 💤  **[잠듦]** {guard}은(는) 깜빡 졸아버렸습니다... ({guard} 공격 모두 취소)\n\n"
@@ -476,7 +481,7 @@ if st.button("⏳ 시뮬레이션 시작"):
             if "김유영" in selected_guards: 
                 #current_team_power *= 1.2
                 if hour == 1:
-                    hour_log += "> 🍞🍞🍞 **:green[동두천의 가호가 함께합니다.]** \n\n"            
+                    hour_log += "> 🍞🍞🍞 :green[**[동두천의 가호가 함께합니다.]**]🍞🍞🍞 \n\n"            
 
             if "임주성" in selected_guards: 
                 current_team_power *= 1.2
@@ -490,7 +495,7 @@ if st.button("⏳ 시뮬레이션 시작"):
             if "송재원" in selected_guards and hour == (1 + song_noh):
                 jawon_alive = 1
                 selected_guards.remove("송재원")
-                hour_log += "> 🤾 :red**[얘들아 먼저 갈게~~~]** 송재원이 도망갔습니다.\n\n"
+                hour_log += "> 🤾 **:red[[얘들아 놀고싶은데 선약이 있어서 먼저 갈게ㅠㅠㅠ]]** 송재원이 오늘도 도망갔습니다.\n\n"
 
             if "이준혁" in selected_guards and "이준혁" not in missed_guards_this_turn and random.random() < 0.30:
                 ezra_buff = random.randint(5, 25)
@@ -535,7 +540,7 @@ if st.button("⏳ 시뮬레이션 시작"):
             ji_roll += crowd_bonus
             
             if hour == 1 and len(selected_guards) >= 3:
-                hour_log += f"> 🔴 :red**[조별과제]** 우리의 부원 수반큼 이정인이 경영학부 조원들을 대동합니다... (매 턴 위력 +{crowd_bonus})\n\n"
+                hour_log += f"> 🔴 **:red[[팀플레이]]** 우리의 부원 수만큼 이정인이 경영학부 조원들을 대동합니다... (매 턴 위력 +{crowd_bonus})\n\n"
 
             # 디버프 적용 계산 (화상, 베스파, 롤랑 등)
             burn_debuff = (3 if "이준혁" in selected_guards else 0) + (spam)
@@ -544,13 +549,13 @@ if st.button("⏳ 시뮬레이션 시작"):
             
 
             if current_burn_penalty > 0:
-                hour_log += f"> 🖼️ :orange**[사진 마구 보내기]** 이준혁의 스팸문자가 이정인의 정신을 흐트려 갉아먹어 위력을 {current_burn_penalty}만큼 깎아냅니다.\n\n"
+                hour_log += f"> 🖼️ **[사진 마구 보내기]** 이준혁의 스팸문자가 이정인의 정신을 흐트려 갉아먹어 위력을 {current_burn_penalty}만큼 깎아냅니다.\n\n"
             
             if "노현경" in selected_guards and hour % 3 == 0 and "노현경" not in missed_guards_this_turn: 
                 # 기본 30 + 지난 격차의 20% 보너스
                 tactical_bonus = int(last_hour_gap * 0.2)
                 temp_debuff += (30 + tactical_bonus)
-                hour_log += f"> 🍰  **[긴급간식보급]** 여유로워진 노현경이 동방에 디저트를 잔뜩 싸들고옵니다. (이정인의 위력 -30 / 간식 보너스 +{tactical_bonus})\n\n"
+                hour_log += f"> 🍰  **[긴급간식보급]** 이정인을 놀리고 여유로워진 노현경이 동방에 디저트를 잔뜩 싸들고옵니다. (이정인의 위력 -30 / 간식 보너스 +{tactical_bonus})\n\n"
             
             # 기믹 처리
             if "양서진" in selected_guards:
@@ -578,7 +583,7 @@ if st.button("⏳ 시뮬레이션 시작"):
             if "윤석준" in selected_guards and hour % 2 == 0 and "윤석준" not in missed_guards_this_turn:
                 reduction = int(effective_ji_attack * 0.1)
                 effective_ji_attack -= reduction
-                hour_log += f"> 👀  **[위력감소]** 윤석준이 예민한 감각으로 순찰을 돌아 이정인의 집중을 흐트러뜨립니다. (감소된 위력: {reduction})\n\n"
+                hour_log += f"> 👀  **[정글러]** 윤석준이 예민한 감각으로 순찰을 돌아 이정인의 집중을 흐트러뜨립니다. (감소된 위력: {reduction})\n\n"
 
             # 뤼엔의 지령 회피 (15% 확률로 위력 0)
             if "전재환" in selected_guards and random.random() < 0.15 and "전재환" not in missed_guards_this_turn:
@@ -590,7 +595,7 @@ if st.button("⏳ 시뮬레이션 시작"):
             #최종 방어 판정
             if "류혜정" in selected_guards and abs(effective_ji_attack - current_team_power) <= 20 and "류혜정" not in missed_guards_this_turn:
                 persistent_power_bonus += 25
-                hour_log += "> 🔩 **[금속스튜디오 과제물로 만들어주지]** 위기의 순간 류혜정이 전기톱을 꺼내 영구적인 흐름을 가져옵니다. (영구 방어선 +25)\n\n"
+                hour_log += "> 🪚 **[금속스튜디오 과제물로 만들어주지]** 위기의 순간 류혜정이 전기톱을 꺼내 영구적인 흐름을 가져옵니다. (영구 방어선 +25)\n\n"
                 
                 # 만약 방어선이 뚫릴 뻔했다면, 강제로 방어 점수를 끌어올려 세이브
                 if current_team_power < effective_ji_attack:
@@ -625,18 +630,18 @@ if st.button("⏳ 시뮬레이션 시작"):
                     debuff_amount = int(sacrifice_power * 0.5)
                     ji_perm_debuff += debuff_amount
                     
-                    hour_log += f"> 😛  :red**[맛보기]** 방어선이 무너지자, 김동규가 충동적으로 곁에 있던 **{sacrifice}**를 이정인에게 맛보기로 던져버립니다.\n\n"
+                    hour_log += f"> 😛  :red[**[맛보기]**] 방어선이 무너지자, **{sacrifice}**이(가) 순간적으로 김동규를 맛보고 도망갑니다!\n\n"
                     hour_log += f"> 😵 **[부원 희생됨ㅠㅠ / 이정인의 영구 위력 {debuff_amount} 감소 / 이번 턴 강제 생존]**\n\n"
                 elif blood_gauge >= 50:
                     blood_gauge -= 50
-                    hour_log += f"> 😎 :orange**[잼얘로 시간끌기]** 잼얘를 소모하여 버텼습니다. (남은 잼얘: {blood_gauge})\n\n"
+                    hour_log += f"> 😎 :orange[**[잼얘로 시간끌기]**] 잼얘를 소모하여 버텼습니다. (남은 잼얘: {blood_gauge})\n\n"
                 elif com_secu > 0:
                     com_secu -= 1
-                    hour_log += f"> 💉 :orange**[컴과의 기지]** 네이버 계정이 털리려는 순간 비밀번호를 변경해 계정을 지켜냅니다. (남은 회피: {com_secu})\n\n"
+                    hour_log += f"> 🖥 :orange[**[컴과의 기지]**] 네이버 계정이 털리려는 순간 비밀번호를 변경해 계정을 지켜냅니다. (남은 회피: {com_secu})\n\n"
                 elif "강준서" in selected_guards and not gjs_shield_used:
                     gjs_shield_used = True
                     reverse_jungin = True
-                    hour_log += f"> 🦹 :orange**[리버스 정인]** 위기의 순간, 강준서가 이정인을 밀쳐내고 이정인의 노트북을 정인해갔습니다!\n\n"
+                    hour_log += f"> 🦹 :orange[**[리버스 정인]**] 위기의 순간, 강준서가 이정인을 밀쳐내고 이정인의 노트북을 정인해갔습니다!\n\n"
                 elif has_noro:
                     has_noro = False
                     ji_perm_debuff += 30  # 시간 역행으로 칼리의 위력 스노우볼을 깎아버림
@@ -645,11 +650,11 @@ if st.button("⏳ 시뮬레이션 시작"):
                 elif revives_left > 0:
                     revives_left -= 1
                     if is_ljs_alive and random.random() < 0.5: is_ljs_alive = False
-                    hour_log += f"> 🍲 :orange[**[두번은 해야지]**] 아 나 네이버 계정 안주면 조별과제 안함;;; (남은 김치찜: {revives_left})\n\n"
+                    hour_log += f"> 🍲 :orange[**[두번은 해야지]**] 김치찜을 소비해 이번 전투에서 생존합니다. (남은 김치찜: {revives_left})\n\n"
 
 
                 else:
-                    hour_log += f"> 💀 :red**[방어선 붕괴]** 이정인에게 에세이를 빼앗겼습니다. (정인's 위력: {effective_ji_attack} / 동아리 방어선: {int(current_team_power)})\n\n"
+                    hour_log += f"> 💀 :red**[방어선 붕괴]** 부원들이 전부 쓰러진 사이 이정인에게 에세이를 빼앗겼습니다. (정인's 위력: {effective_ji_attack} / 동아리 방어선: {int(current_team_power)})\n\n"
                     battle_logs += hour_log
                     log_container.markdown(battle_logs)
                     survival_status = False
@@ -676,9 +681,9 @@ if st.button("⏳ 시뮬레이션 시작"):
         # 결과 출력
         st.write("---")
         if survival_status:
-            st.success(f"🎉 **미션 성공!** {target_hours}시간 안에 과제를 제출하는데 성공했습니다. 현재가 기쁨의 눈물을 흘립니다.")
+            st.success(f"🎉 **미션 성공!** {target_hours}시간 안에 과제를 제출하는데 성공했습니다. 이현재가 기쁨의 눈물을 흘립니다.")
         else:
-            st.error("❌ **미션 실패!** 에세이는 강탈당했고, 결과는 사오정입니다!")
+            st.error("❌ **미션 실패!** 에세이는 강탈당했고, 결과는 사오정입니다! 아발론 회장이나 해야겠군요...")
 
         st.write("---")
         
