@@ -314,7 +314,7 @@ if st.button("⏳ 시뮬레이션 시작"):
             if jawon_alive == 1 and random.random() < 0.1:
                 selected_guards.append("송재원")
                 jawon_alive = 2
-                hour_log += ">  👋 **:green[[얘들아 나 다시 왔어~~]]** 송재원이 동방으로 복귀했습니다!\n\n"
+                hour_log += ">  👋 **:green[[얘들아 나 다시 왔어~~]]** 송재원이 동방으로 복귀했습니다! 압도적인 동방 텐션이 유지됩니다.\n\n"
 
             # 호위 전력 및 주사위 난수 계산
             current_team_power = persistent_power_bonus + carried_shield # 영구 버프(바퀴 황제 등)부터 시작
@@ -354,7 +354,7 @@ if st.button("⏳ 시뮬레이션 시작"):
                             
                         elif guard == "권준혁":
                             current_team_power += 15
-                            hour_log += "> 🎇 :red[**[천문학자의 싸움법]**] 천문 관측용 레이저포인터를 꺼내들어 이정인의 시야를 방해합니다!\n\n"
+                            hour_log += "> 🎇 :red[**[눈뽕]**] 권준혁이 천문 관측용 레이저포인터를 꺼내들어 이정인의 시야를 방해합니다!\n\n"
                         
                         elif guard == "오유찬":
                             ji_perm_debuff += 5 
@@ -654,7 +654,7 @@ if st.button("⏳ 시뮬레이션 시작"):
 
 
                 else:
-                    hour_log += f"> 💀 :red**[방어선 붕괴]** 부원들이 전부 쓰러진 사이 이정인에게 에세이를 빼앗겼습니다. (정인's 위력: {effective_ji_attack} / 동아리 방어선: {int(current_team_power)})\n\n"
+                    hour_log += f"> 💀 :red[**[방어선 붕괴]**] 부원들이 전부 쓰러진 사이 이정인에게 에세이를 빼앗겼습니다. (정인's 위력: {effective_ji_attack} / 동아리 방어선: {int(current_team_power)})\n\n"
                     battle_logs += hour_log
                     log_container.markdown(battle_logs)
                     survival_status = False
