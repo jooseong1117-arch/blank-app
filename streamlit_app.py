@@ -134,7 +134,7 @@ if len(hards) >= 3:
 # 9. 경평
 buisness_team = ["이준혁", "이유빈", "노현경", "류신해", "오유찬", "전재환", "김유영"]
 buisness_count = sum(1 for g in buisness_team if g in selected_guards)
-if buisness_count >= 3:  # 발동 조건을 3인 이상으로 빡빡하게 올림!
+if buisness_count >= 2:  # 발동 조건을 3인 이상으로 빡빡하게 올림!
     buisness_penalty = buisness_count * 4
     synergy_messages.append(f"💡 **[시너지 발견: 경평ㅋㅋㅋ]** {buisness_count}인의 경평ㅋㅋ이 모여, 끔찍한 진흙탕 싸움을 유도합니다! (매 6시간마다 이정인의 위력 -{buisness_penalty})")
 
@@ -158,7 +158,7 @@ if "임주성" in selected_guards and "한부현" in selected_guards:
 
 # 14. 명예 일본인들
 jpops = [g for g in selected_guards if g in ["정진성", "류신해", "류혜정", "오유찬", "윤석준", "최진영"]]
-if len(jpops) >= 3:
+if len(jpops) >= 2:
     synergy_messages.append("💡 **[시너지 발견: 명예 일본인들]** JPOP 료이키 텐카이. (아군 진형의 영구 방어선 +10)")
 
 if synergy_messages:
@@ -258,7 +258,7 @@ if st.button("⏳ 시뮬레이션 시작"):
 
         # 7. 제이팝 (영구 방어선 증가)
         jpops = [g for g in selected_guards if g in ["정진성", "류신해", "류혜정", "오유찬", "윤석준", "최진영"]]
-        if len(jpops) >= 3:
+        if len(jpops) >= 2:
             persistent_power_bonus += 10
 
 
