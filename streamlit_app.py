@@ -21,7 +21,7 @@ st.write("---")
 guards_db = {
     "이아람": {"cost": 5000, "power": 20, "dice": 10},
     "권준혁": {"cost": 5500, "power": 25, "dice": 15},
-    "송재원": {"cost": 6000, "power": 130, "dice": 35},
+    "송재원": {"cost": 6000, "power": 130, "dice": 10},
     "오유찬": {"cost": 6000, "power": 40, "dice": 20},
     "김동규": {"cost": 6000, "power": 25, "dice": 10},
     "류신해": {"cost": 6500, "power": 55, "dice": 20},
