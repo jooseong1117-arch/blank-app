@@ -188,7 +188,7 @@ if st.button("⏳ 시뮬레이션 시작"):
 
 # 기본 장비 변수
         target_hours = 18 if "🍖족발" in selected_items else 24
-        has_noro = "🦪굴" in selected_items
+        has_noro = 1 if "🦪굴" in selected_items else 0
         revives_left = 2 if "🍲식어버린김치찜" in selected_items else 0
         aggro_multiplier = 0.7 if "🥓우대갈비" in selected_items else 1.0
         has_t_gear = "T사 보조 태엽" in selected_items
@@ -209,6 +209,10 @@ if st.button("⏳ 시뮬레이션 시작"):
             revives_left += 1
             battle_logs += "> 🍲 :blue[**[시너지 발동: 김치남]**] 울트라 김치남이 김치찜을 한개 더 사왔습니다. (부활 횟수 +1)\n\n"
 
+        if "장준혁" in selected_guards and "🦪굴" in selected_items:
+            has_noro += 1
+            battle_logs += "> 🦪 :blue[**[시너지 발동: 석화]**] 이런 시너지가 왜 있죠? (부활 횟수 +1)\n\n"
+        
         is_ysj_berserk = False
         last_hour_gap = 0  # 직전 시간의 위력 격차 저장
         gjs_shield_used = False
@@ -619,6 +623,11 @@ if st.button("⏳ 시뮬레이션 시작"):
                     is_ysj_berserk = True
                     hour_log += "> 🤸‍♂️ :red[**[아버지의 도망]**] 어느순간 임주성이 갑자기 사라져있었습니다.\n\n"
                     hour_log += "> 🤬 :red[**[딸의 절규]**] 아버지에게 배신당한 양서진의 눈빛에 섬뜩한 광기가 차오릅니다...\n\n"
+                elif has_noro > 0:
+                    has_noro -= 1
+                    ji_perm_debuff += 30  # 위력 스노우볼을 깎아버림
+                    hour_log += f"> 🧻 :orange[**[노로바이러스]**] 방어선이 붕괴된 순간, 이정인에게 굴을 먹여 노로바이러스에 감염시킵니다! 녀석 후퇴하는 꼴이 좋군요.\n\n"
+                    hour_log += f"> ⚠️ **(강제 생존 / 이정인의 위력이 영구적으로 30 감소)**\n\n"
                 # 1순위 생존기: 마티아스의 강제 희생
                 elif "김동규" in selected_guards and len(selected_guards) > 1:
                     # 조건이 만족되었을 때(elif 안쪽) 비로소 명단을 작성합니다.
@@ -643,11 +652,6 @@ if st.button("⏳ 시뮬레이션 시작"):
                     gjs_shield_used = True
                     reverse_jungin = True
                     hour_log += f"> 🦹 :orange[**[리버스 정인]**] 위기의 순간, 강준서가 이정인을 밀쳐내고 이정인의 노트북을 정인해갔습니다!\n\n"
-                elif has_noro:
-                    has_noro = False
-                    ji_perm_debuff += 30  # 시간 역행으로 칼리의 위력 스노우볼을 깎아버림
-                    hour_log += f"> 🧻 :orange[**[노로바이러스]**] 방어선이 붕괴된 순간, 이정인에게 굴을 먹여 노로바이러스에 감염시킵니다! 녀석 후퇴하는 꼴이 좋군요.\n\n"
-                    hour_log += f"> ⚠️ **(강제 생존 / 이정인의 위력이 영구적으로 30 감소)**\n\n"
                 elif revives_left > 0:
                     revives_left -= 1
                     if is_ljs_alive and random.random() < 0.5: is_ljs_alive = False
